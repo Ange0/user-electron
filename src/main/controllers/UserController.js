@@ -8,6 +8,14 @@ class UserController {
       throw new Error(error)
     }
   }
+  static async all() {
+    try {
+      const allUsers = await User.findAll()
+      return allUsers
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
   // more methods
 }
 export default UserController

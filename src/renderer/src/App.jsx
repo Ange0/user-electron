@@ -1,10 +1,23 @@
 import NewUser from './components/NewUser'
 import ListUsers from './components/ListUsers'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 function App() {
   const [users, setUsers] = useState([])
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
+
+  async function allUsers() {
+    try {
+      // eslint-disable-next-line no-undef
+      const allUsers = await electronAPI.allUsers()
+      setUsers(allUsers)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    allUsers()
+  }, [])
   async function createUser(e) {
     try {
       e.preventDefault()

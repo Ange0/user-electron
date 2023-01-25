@@ -49,6 +49,7 @@ app.whenReady().then(() => {
     // A small demonstration of UserController with ipcMain.
     // see https://www.electronjs.org/docs/latest/tutorial/ipc for more information.
     ipcMain.handle('createUser', async (e, user) => await UserController.create(user))
+    ipcMain.handle('allUsers', async () => await UserController.all())
   } catch (error) {
     console.log(error)
   }
