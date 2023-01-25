@@ -1,0 +1,47 @@
+function ListUsers() {
+  return (
+    <>
+      <div className="flex flex-col space-y-4 w-1/2 ">
+        <div className="font-bold text-4xl text-[#ffeba7]">List users</div>
+        <div className="flex flex-col space-y-6 max-h-96 overflow-auto ">
+          <div className="self-center flex flex-col items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-40 h-40  text-gray-600"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+              />
+            </svg>
+            <span className="text-gray-600">you have not added a user yet !</span>
+          </div>
+
+          <div className="flex justify-between items-center flex-none  bg-[#2a2b38] p-4 rounded-md text-gray-400 font-bold shadow-md">
+            <div>
+              Yao Kouassi Ange . <span className="text-gray-500">kouassiangey@gmail.com</span>
+            </div>
+            <div className="rounded-full p-1 cursor-pointer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-red-400 hover:text-red-600 transition"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+export default ListUsers
