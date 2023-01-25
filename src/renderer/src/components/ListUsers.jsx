@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 
 /* eslint-disable react/prop-types */
-function ListUsers({ users }) {
+function ListUsers({ users, handleDeleteUser }) {
   useEffect(() => {
     console.log('ddhdh')
-    console.log(users.length)
+    console.log(users)
   }, [])
   return (
     <>
@@ -33,13 +33,19 @@ function ListUsers({ users }) {
             users.map((user, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center flex-none  bg-[#2a2b38] p-4 rounded-md text-gray-400 font-bold shadow-md"
+                className="flex justify-between items-center flex-none  bg-[#2a2b38] p-4 rounded-md text-gray-400 font-bold shadow-md cursor-pointer hover:opacity-40 transition"
               >
-                <div>
+                <div className="flex items-center space-x-2">
+                  <div
+                    className={`h-1 w-1 ${user._options.isNewRecord ? 'bg-green-300' : ''}`}
+                  ></div>
                   <span className="font-bold">{user.dataValues.fullName}</span>
                   <span className="text-gray-500"> . {user.dataValues.email} </span>
                 </div>
-                <div className="rounded-full p-1 cursor-pointer">
+                <div
+                  onClick={() => handleDeleteUser(user.dataValues.id)}
+                  className="rounded-full p-1 cursor-pointer"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

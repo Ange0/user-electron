@@ -1,9 +1,18 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import UserController from './controllers/UserController'
 
+function quitApp() {
+  let response = dialog.showMessageBoxSync({
+    title: 'Confirm',
+    type: 'question',
+    message: 'Are you sure you want to quit?',
+    buttons: ['yes', 'No']
+  })
+  if (response === 0) app.quit()
+}
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -32,10 +41,10 @@ function createWindow() {
   // Load the remote URL for development or the local html file for production.
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
-    mainWindow.webContents.openDevTools()
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+  mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
@@ -50,6 +59,9 @@ app.whenReady().then(() => {
     // see https://www.electronjs.org/docs/latest/tutorial/ipc for more information.
     ipcMain.handle('createUser', async (e, user) => await UserController.create(user))
     ipcMain.handle('allUsers', async () => await UserController.all())
+    ipcMain.handle('deleteUser', async (e, idUser) => await UserController.delete(idUser))
+
+    ipcMain.on('quitApp', () => quitApp())
   } catch (error) {
     console.log(error)
   }

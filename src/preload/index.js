@@ -9,7 +9,10 @@ if (process.contextIsolated) {
     contextBridge.exposeInMainWorld('electronAPI', {
       createUser: (fullName, email) =>
         electronAPI.ipcRenderer.invoke('createUser', { fullName, email }),
-      allUsers: () => electronAPI.ipcRenderer.invoke('allUsers')
+      allUsers: () => electronAPI.ipcRenderer.invoke('allUsers'),
+      deleteUser: (idUser) => electronAPI.ipcRenderer.invoke('deleteUser', idUser),
+
+      quitApp: () => electronAPI.ipcRenderer.send('quitApp')
     })
   } catch (error) {
     console.error(error)

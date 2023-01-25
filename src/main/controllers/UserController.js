@@ -10,8 +10,20 @@ class UserController {
   }
   static async all() {
     try {
-      const allUsers = await User.findAll()
+      const allUsers = await User.findAll({ order: [['createdAt', 'DESC']] })
       return allUsers
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+  static async delete(idUser) {
+    console.log(idUser)
+    try {
+      await User.destroy({
+        where: {
+          id: idUser
+        }
+      })
     } catch (error) {
       throw new Error(error)
     }

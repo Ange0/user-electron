@@ -50,7 +50,7 @@ function NewUser({ setFullName, setEmail, onSubmit }) {
         </div>
         <button
           type="submit"
-          className="bg-[#ffeba7] transition shadow-[#ffeba7]/90 font-bold w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#102770] hover:text-[#ffeba7]"
+          className="bg-[#ffeba7] transition shadow shadow-[#ffeba7]/50 font-bold w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#102770] hover:text-[#ffeba7]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
