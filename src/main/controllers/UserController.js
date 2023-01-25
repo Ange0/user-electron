@@ -2,8 +2,8 @@ import User from '../models/UserModel'
 class UserController {
   static async create(user) {
     try {
-      const ange = await User.create({ firstName: user.firstName, lastName: user.lastName })
-      return ange
+      const userCreated = await User.create({ fullName: user.fullName, email: user.email })
+      return userCreated
     } catch (error) {
       throw new Error(error)
     }

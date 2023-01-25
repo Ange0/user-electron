@@ -1,8 +1,9 @@
-function NewUser() {
+/* eslint-disable react/prop-types */
+function NewUser({ setFullName, setEmail, onSubmit }) {
   return (
     <>
       <div className="font-bold text-4xl text-[#ffeba7]">New User</div>
-      <form className="flex bg-[#2a2b38] p-4 rounded-md space-x-4">
+      <form onSubmit={onSubmit} className="flex bg-[#2a2b38] p-4 rounded-md space-x-4">
         <div className="flex flex-grow space-x-4">
           <div className="flex items-center space-x-2 bg-[#1f2029] rounded-lg p-2 shadow w-1/2">
             <svg
@@ -23,6 +24,7 @@ function NewUser() {
             <input
               placeholder="Full name"
               className="bg-[#1f2029] p-1 focus:outline-none  text-[#ffeba7] placeholder-gray-500 w-full"
+              onChange={(e) => setFullName(e.target.value)}
             />
           </div>
           <div className="flex items-center space-x-2 bg-[#1f2029] rounded-lg p-2 shadow w-1/2">
@@ -42,10 +44,14 @@ function NewUser() {
             <input
               placeholder="Email"
               className="bg-[#1f2029] p-1 focus:outline-none  text-[#ffeba7] placeholder-gray-500 w-full"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
         </div>
-        <button className="bg-[#ffeba7] transition shadow-[#ffeba7]/90 font-bold w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#102770] hover:text-[#ffeba7]">
+        <button
+          type="submit"
+          className="bg-[#ffeba7] transition shadow-[#ffeba7]/90 font-bold w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#102770] hover:text-[#ffeba7]"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

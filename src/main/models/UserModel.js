@@ -6,11 +6,11 @@ class User extends Model {}
 User.init(
   {
     // Model attributes are defined here
-    firstName: {
+    fullName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    lastName: {
+    email: {
       type: DataTypes.STRING
       // allowNull defaults to true
     }
@@ -21,6 +21,8 @@ User.init(
     modelName: 'User' // We need to choose the model name
   }
 )
+//  This creates the table if it doesn't exist (and does nothing if it already exists)
+// see https://sequelize.org/docs/v6/core-concepts/model-basics/
 User.sync()
 
 export default User
