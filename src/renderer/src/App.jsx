@@ -7,6 +7,10 @@ function App() {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
 
+  function resertForm() {
+    setFullName('')
+    setEmail('')
+  }
   async function allUsers() {
     try {
       // eslint-disable-next-line no-undef
@@ -27,6 +31,7 @@ function App() {
         const userCreated = await electronAPI.createUser(fullName, email)
         let usersCopy = [userCreated, ...users]
         setUsers(usersCopy)
+        resertForm()
       }
     } catch (error) {
       throw new Error(error)
@@ -46,7 +51,13 @@ function App() {
   return (
     <div className="flex justify-center bg-[#1f2029] h-screen overflow-hidden pt-20">
       <div className="flex flex-col space-y-10 w-10/12 xl:w-4/6">
-        <NewUser setFullName={setFullName} setEmail={setEmail} onSubmit={createUser} />
+        <NewUser
+          fullName={fullName}
+          setFullName={setFullName}
+          email={email}
+          setEmail={setEmail}
+          onSubmit={createUser}
+        />
         <ListUsers users={users} handleDeleteUser={handleDeleteUser} />
         <ButtonQuitApp />
       </div>

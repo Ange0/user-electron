@@ -16,8 +16,10 @@ function quitApp() {
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    minWidth: 900,
-    minHeight: 670,
+    width: 1200,
+    height: 700,
+    minWidth: 1200,
+    minHeight: 700,
     show: false,
     autoHideMenuBar: true,
     backgroundColor: '#1f2029',
@@ -44,6 +46,7 @@ function createWindow() {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+  //you can enable it for debugging
   mainWindow.webContents.openDevTools()
 }
 

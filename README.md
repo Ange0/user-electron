@@ -32,3 +32,5 @@ $ npm run build:mac
 # For Linux
 $ npm run build:linux
 ```
+
+# yarn postinstall --platform win32 pour compiler le module natif sqlite3 avant le yarn build:win si vous etes sur mac par exemple

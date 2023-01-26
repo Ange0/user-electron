@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function NewUser({ setFullName, setEmail, onSubmit }) {
+function NewUser({ fullName, setFullName, email, setEmail, onSubmit }) {
   return (
     <>
       <div className="font-bold text-4xl text-[#ffeba7]">New User</div>
@@ -24,6 +24,7 @@ function NewUser({ setFullName, setEmail, onSubmit }) {
             <input
               placeholder="Full name"
               className="bg-[#1f2029] p-1 focus:outline-none  text-[#ffeba7] placeholder-gray-500 w-full"
+              value={fullName}
               onChange={(e) => setFullName(e.target.value)}
             />
           </div>
@@ -44,6 +45,7 @@ function NewUser({ setFullName, setEmail, onSubmit }) {
             <input
               placeholder="Email"
               className="bg-[#1f2029] p-1 focus:outline-none  text-[#ffeba7] placeholder-gray-500 w-full"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
