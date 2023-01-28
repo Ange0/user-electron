@@ -9,10 +9,10 @@ const sequelize = new Sequelize({
     __dirname,
     is.dev && process.env['ELECTRON_RENDERER_URL']
       ? /* The path to the database file. */
-        '../../resources/test.sqlite'
+        '../../resources/test.db'
       : // NB: We exit once more because we want the database to be outside of the asar file.
         //this configuration is in the electron-builder.yml file and has the extraResources key.
-        '../../../resources/test.sqlite'
+        '../../../resources/test.db'
   )
 })
 
