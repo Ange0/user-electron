@@ -1,7 +1,18 @@
+import { dialog } from 'electron'
 import User from '../models/UserModel'
 class UserController {
   static async create(user) {
     try {
+      if (!user.email) {
+        dialog.showMessageBoxSync({
+          title: 'Confirm',
+          type: 'error',
+          message: 'Please provide a email address?',
+          buttons: ['OK']
+        })
+        throw new Error('Please provide a email address?')
+      }
+
       const userCreated = await User.create({ fullName: user.fullName, email: user.email })
       return userCreated
     } catch (error) {

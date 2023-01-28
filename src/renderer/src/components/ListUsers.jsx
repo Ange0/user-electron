@@ -1,11 +1,8 @@
-import { useEffect } from 'react'
-
 /* eslint-disable react/prop-types */
 function ListUsers({ users, handleDeleteUser }) {
-  useEffect(() => {
-    console.log('ddhdh')
-    console.log(users)
-  }, [])
+  function formatDate(date) {
+    return date.toLocaleDateString('fr')
+  }
   return (
     <>
       <div className="flex flex-col space-y-4 w-1/2 ">
@@ -33,7 +30,7 @@ function ListUsers({ users, handleDeleteUser }) {
             users.map((user, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center flex-none  bg-[#2a2b38] p-4 rounded-md text-gray-400 font-bold shadow-md cursor-pointer hover:opacity-40 transition"
+                className="flex justify-between items-center flex-none  bg-[#2a2b38] p-4 rounded-md text-gray-400 font-bold shadow-md cursor-pointer hover:opacity-40 transition duration-500"
               >
                 <div className="flex items-center space-x-2">
                   <div
@@ -42,20 +39,25 @@ function ListUsers({ users, handleDeleteUser }) {
                   <span className="font-bold">{user.dataValues.fullName}</span>
                   <span className="text-gray-500"> . {user.dataValues.email} </span>
                 </div>
-                <div
-                  onClick={() => handleDeleteUser(user.dataValues.id)}
-                  className="rounded-full p-1 cursor-pointer"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6 text-red-400 hover:text-red-600 transition"
+                <div className="flex items-center space-x-4">
+                  <span className="text-gray-500 ml-4 ">
+                    {formatDate(user.dataValues.createdAt)}{' '}
+                  </span>
+                  <div
+                    onClick={() => handleDeleteUser(user.dataValues.id)}
+                    className="rounded-full p-1 cursor-pointer"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-red-400 hover:text-red-600 transition"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             ))

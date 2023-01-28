@@ -22,6 +22,7 @@ function NewUser({ fullName, setFullName, email, setEmail, onSubmit }) {
             </svg>
 
             <input
+              autoFocus
               placeholder="Full name"
               className="bg-[#1f2029] p-1 focus:outline-none  text-[#ffeba7] placeholder-gray-500 w-full"
               value={fullName}
@@ -51,8 +52,12 @@ function NewUser({ fullName, setFullName, email, setEmail, onSubmit }) {
           </div>
         </div>
         <button
-          type="submit"
-          className="bg-[#ffeba7] transition shadow shadow-[#ffeba7]/50 font-bold w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#102770] hover:text-[#ffeba7]"
+          type={`${fullName && 'submit'}`}
+          className={`${
+            fullName
+              ? 'opacity-100 cursor-pointer hover:bg-[#102770] hover:text-[#ffeba7]'
+              : 'opacity-10 cursor-not-allowed'
+          }   bg-[#ffeba7] transition duration-500 delay-200 shadow shadow-[#ffeba7]/50 font-bold w-10 h-10 flex items-center justify-center rounded-full  `}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

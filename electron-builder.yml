@@ -14,7 +14,6 @@ asarUnpack:
 afterSign: build/notarize.js
 win:
   executableName: electron-react-sequelize-sqlite-boilerplate
-  'target': ['nsis']
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
