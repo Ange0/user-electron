@@ -9,6 +9,7 @@ if (process.contextIsolated) {
     contextBridge.exposeInMainWorld('electronAPI', {
       createUser: (fullName, email) =>
         electronAPI.ipcRenderer.invoke('createUser', { fullName, email }),
+      updateUser: (user) => electronAPI.ipcRenderer.invoke('updateUser', user),
       allUsers: () => electronAPI.ipcRenderer.invoke('allUsers'),
       deleteUser: (idUser) => electronAPI.ipcRenderer.invoke('deleteUser', idUser),
 

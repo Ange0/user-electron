@@ -19,6 +19,16 @@ class UserController {
       throw new Error(error)
     }
   }
+  static async update(user) {
+    try {
+      await User.update(
+        { fullName: user.dataValues.fullName, email: user.dataValues.email },
+        { where: { id: user.dataValues.id } }
+      )
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
   static async all() {
     try {
       const allUsers = await User.findAll({ order: [['createdAt', 'DESC']] })
@@ -28,7 +38,6 @@ class UserController {
     }
   }
   static async delete(idUser) {
-    console.log(idUser)
     try {
       await User.destroy({
         where: {

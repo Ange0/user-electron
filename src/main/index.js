@@ -61,12 +61,12 @@ app.whenReady().then(() => {
     // A small demonstration of UserController with ipcMain.
     // see https://www.electronjs.org/docs/latest/tutorial/ipc for more information.
     ipcMain.handle('createUser', async (e, user) => await UserController.create(user))
+    ipcMain.handle('updateUser', async (e, user) => await UserController.update(user))
     ipcMain.handle('allUsers', async () => await UserController.all())
     ipcMain.handle('deleteUser', async (e, idUser) => await UserController.delete(idUser))
-
     ipcMain.on('quitApp', () => quitApp())
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 
   // Default open or close DevTools by F12 in development

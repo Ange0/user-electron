@@ -1,11 +1,15 @@
+import InputUpdate from './InputUpdate'
+import TYPE_FIELD from '../../utils'
+
 /* eslint-disable react/prop-types */
-function ListUsers({ users, handleDeleteUser }) {
+function ListUsers({ users, handleDeleteUser, handleUpdateUser }) {
   function formatDate(date) {
     return date.toLocaleDateString('fr')
   }
+
   return (
     <>
-      <div className="flex flex-col space-y-4 w-1/2 ">
+      <div className="flex flex-col space-y-4 w-4/6 ">
         {users.length > 0 && <div className="font-bold text-4xl text-[#ffeba7]">List users</div>}
         <div className="flex flex-col space-y-6 max-h-96 overflow-auto ">
           {users.length === 0 ? (
@@ -30,14 +34,23 @@ function ListUsers({ users, handleDeleteUser }) {
             users.map((user, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center flex-none  bg-[#2a2b38] p-4 rounded-md text-gray-400 font-bold shadow-md cursor-pointer hover:opacity-40 transition duration-500"
+                className="flex justify-between items-center flex-none  bg-[#2a2b38] p-4 rounded-md text-gray-400 font-bold shadow-md hover:opacity-80 transition duration-500"
               >
                 <div className="flex items-center space-x-2">
                   <div
                     className={`h-1 w-1 ${user._options.isNewRecord ? 'bg-green-300' : ''}`}
                   ></div>
-                  <span className="font-bold">{user.dataValues.fullName}</span>
-                  <span className="text-gray-500"> . {user.dataValues.email} </span>
+
+                  <InputUpdate
+                    user={user}
+                    handleUpdateUser={handleUpdateUser}
+                    fieldType={TYPE_FIELD.FULL_NAME}
+                  />
+                  <InputUpdate
+                    user={user}
+                    handleUpdateUser={handleUpdateUser}
+                    fieldType={TYPE_FIELD.EMAIL}
+                  />
                 </div>
                 <div className="flex items-center space-x-4">
                   <span className="text-gray-500 ml-4 ">
