@@ -3,12 +3,12 @@ import { useRef, useState } from 'react'
 import TYPE_FIELD from '../../utils'
 
 export default function InputUpdate({ user, handleUpdateUser, fieldType }) {
-  const [currentField, setCurrentField] = useState(null)
+  const [currentValueInput, setCurrentValueInput] = useState(null)
   const currentUser = useRef({ idUser: null, fieldType: null })
   const [modeFieldUpdateActived, setModeFieldUpdateActived] = useState(false)
 
   function handleToActiveUpdateFieldMode(idUser, field, fieldType) {
-    setCurrentField(field)
+    setCurrentValueInput(field)
     currentUser.current.idUser = idUser
     currentUser.current.fieldType = fieldType
     setModeFieldUpdateActived(true)
@@ -23,22 +23,22 @@ export default function InputUpdate({ user, handleUpdateUser, fieldType }) {
     }
   }
 
-  return currentField &&
+  return currentValueInput &&
     currentUser.current.idUser === user.dataValues.id &&
     modeFieldUpdateActived ? (
     <input
-      value={currentField}
+      value={currentValueInput}
       onChange={(e) => {
         if (e.target.value.length >= 0) {
-          setCurrentField(e.target.value.length == 0 ? ' ' : e.target.value)
+          setCurrentValueInput(e.target.value.length == 0 ? ' ' : e.target.value)
         }
       }}
       onMouseLeave={() => {
         setModeFieldUpdateActived(false)
-        if (currentField !== user.dataValues.fullName || currentField !== user.dataValues.email) {
+        if (currentValueInput !== getField(fieldType)) {
           handleUpdateUser(user, {
             fieldType: fieldType,
-            value: currentField
+            value: currentValueInput
           })
         }
       }}
@@ -49,10 +49,10 @@ export default function InputUpdate({ user, handleUpdateUser, fieldType }) {
       onClick={() =>
         handleToActiveUpdateFieldMode(user.dataValues.id, getField(fieldType), fieldType)
       }
-      className="font-bold cursor-pointer"
+      className="font-bold cursor-pointer hover:opacity-50 transition"
     >
-      {currentField !== null && currentUser.current.idUser === user.dataValues.id
-        ? currentField
+      {currentValueInput !== null && currentUser.current.idUser === user.dataValues.id
+        ? currentValueInput
         : getField(fieldType)}
     </span>
   )

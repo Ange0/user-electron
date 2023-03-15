@@ -3,7 +3,7 @@ import NewUser from './NewUser'
 import ListUsers from './ListUsers'
 import ButtonQuitApp from './ButtonQuiApp'
 import TYPE_FIELD from '../../utils'
-
+import icon from './../assets/icon.png?asset'
 function Home() {
   const [users, setUsers] = useState([])
   const [fullName, setFullName] = useState('')
@@ -75,11 +75,16 @@ function Home() {
           setEmail={setEmail}
           onSubmit={handleCreateUser}
         />
-        <ListUsers
-          users={users}
-          handleDeleteUser={handleDeleteUser}
-          handleUpdateUser={handleUpdateUser}
-        />
+        <div className="flex justify-between">
+          <ListUsers
+            users={users}
+            handleDeleteUser={handleDeleteUser}
+            handleUpdateUser={handleUpdateUser}
+          />
+          <div className="w-60 h-60 bg-cyan-400 shadow-md shadow-cyan-500   rounded-full">
+            <img src={icon} className="w-full h-full" />
+          </div>
+        </div>
         <ButtonQuitApp />
       </div>
     </div>

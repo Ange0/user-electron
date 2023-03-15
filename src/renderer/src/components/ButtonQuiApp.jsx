@@ -4,7 +4,7 @@ function ButtonQuitApp() {
       // eslint-disable-next-line no-undef
       onClick={() => electronAPI.quitApp()}
       type="submit"
-      className="bg-red-500 fixed bottom-20 right-20 transition shadow shadow-red-500/50 font-bold w-20 h-20 p-4 flex items-center justify-center rounded-full hover:opacity-20 hover:text-red-900"
+      className="bg-red-500 fixed bottom-20 right-20 transition shadow shadow-red-500/50 font-bold w-10 h-10 xl:w-20 xl:h-20 p-2 xl:p-4 flex items-center justify-center rounded-full hover:opacity-20 hover:text-red-900"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
