@@ -9,8 +9,6 @@ files:
   - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
 extraResources:
   - resources/test.sqlite
-asarUnpack:
-  - resources/*
 afterSign: build/notarize.js
 win:
   executableName: electron-react-sequelize-sqlite-boilerplate
